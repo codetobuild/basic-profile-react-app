@@ -10,8 +10,8 @@ const Dashboard = () => {
   return (
     <Container sx={{ marginTop: 5 }}>
       <Grid container spacing={5}>
-        {IMAGES.map((item) => (
-          <Grid item xs={3}>
+        {IMAGES.map((item, index) => (
+          <Grid item xs={3} key={item}>
             <Box>
               <img
                 src="https://picsum.photos/200"

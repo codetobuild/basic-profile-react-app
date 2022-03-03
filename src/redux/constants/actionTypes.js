@@ -7,3 +7,5 @@ export const LOGOUT = "LOGOUT";
 export const UPDATE_ACCOUNT = "UPDATE_ACCOUNT";
 
 export const DELETE_ACCOUNT = "DELETE";
+
+export const LOADING = "LOADING";

@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import ProfileMenuItem from "./ProfileMenuItem";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,6 +22,10 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    // console.log("redux user data", userData);
+  }, [userData]);
 
   return (
     <Container maxWidth="fluid" sx={{ backgroundColor: "#14213d" }}>
@@ -40,22 +44,23 @@ const Navbar = () => {
         <Box>
           <Box
             sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-            <a href="#products">
+            <NavLink to="/products">
               <Typography
                 variant="h6"
                 component="h3"
                 sx={{ minWidth: 100, color: "white" }}>
                 Products
               </Typography>
-            </a>
-            <a href="#services">
+            </NavLink>
+            <NavLink to="/Services">
               <Typography
                 variant="h6"
                 component="h3"
                 sx={{ minWidth: 100, color: "white" }}>
                 Services
               </Typography>
-            </a>
+            </NavLink>
+
             <Tooltip title="Account settings">
               <IconButton
                 onClick={handleClick}
@@ -111,22 +116,7 @@ const Navbar = () => {
           }}
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-          <MenuItem>
-            <Avatar /> My Profile
-          </MenuItem>
-          <Divider />
-          <MenuItem>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
-          <MenuItem>
-            <ListItemIcon>
-              <Logout fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
+          <ProfileMenuItem />
         </Menu>
       </>
     );
