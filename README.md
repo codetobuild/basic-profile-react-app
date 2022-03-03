@@ -1,8 +1,8 @@
 # Basic Profile App
 
-### This is a basic Redux implementation in React App
+### This is a basic Redux implementation in React App. 
 
-# Demo Link: 
+# Demo Link: [click here to view](https://basic-profile.netlify.app/)
 
 ### `npm start`
 
