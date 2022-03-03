@@ -1,6 +1,6 @@
 # Basic Profile App
 
-- This is a basic React app which is implemented with redux.
+### This is a basic Redux implementation in React App
 
 # Demo Link: 
 
